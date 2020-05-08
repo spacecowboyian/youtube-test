@@ -1,7 +1,12 @@
-import { LitElement, html, css } from 'lit-element';
+import {
+  LitElement,
+  html,
+  css
+} from 'lit-element';
 
 export class SortControls extends LitElement {
-  static styles = css`
+  static get styles() {
+    return css `
     :host {
       color: #fff;
       display: block;
@@ -23,6 +28,7 @@ export class SortControls extends LitElement {
       color: rgb(64.7%, 16.5%, 16.5%);
     }
   `;
+  }
 
   static get properties() {
     return {
@@ -54,8 +60,11 @@ export class SortControls extends LitElement {
   }
 
   render() {
-    const { activeSort, sorts } = this;
-    return html`
+    const {
+      activeSort,
+      sorts
+    } = this;
+    return html `
       <ul>
         ${sorts.map(
           sort => html`

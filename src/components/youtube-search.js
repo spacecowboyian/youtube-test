@@ -8,7 +8,8 @@ import './sort-controls.js';
 import './video-list.js';
 
 export class YoutubeSearch extends LitElement {
-  static styles = css `
+  static get styles() {
+    return css `
     :host {
       align-items: center;
       display: flex;
@@ -49,6 +50,7 @@ export class YoutubeSearch extends LitElement {
       }
     }
   `;
+  }
 
   static get properties() {
     return {

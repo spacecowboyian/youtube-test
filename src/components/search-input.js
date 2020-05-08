@@ -1,7 +1,12 @@
-import { LitElement, html, css } from 'lit-element';
+import {
+  LitElement,
+  html,
+  css
+} from 'lit-element';
 
 export class SearchInput extends LitElement {
-  static styles = css`
+  static get styles() {
+    return css `
     :host {
       flex-grow: 1;
       max-width: 600px;
@@ -39,6 +44,7 @@ export class SearchInput extends LitElement {
       color: #000;
     }
   `;
+  }
 
   static get properties() {
     return {
@@ -59,8 +65,10 @@ export class SearchInput extends LitElement {
   }
 
   render() {
-    const { query } = this;
-    return html`
+    const {
+      query
+    } = this;
+    return html `
       <input
         @change=${this.handleUpdate}
         placeholder="What are we watching?"
