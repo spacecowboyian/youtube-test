@@ -16,12 +16,14 @@ export class SortControls extends LitElement {
       display: flex;
       list-style: none;
       padding: 0;
+      justify-content: center;
     }
 
     li {
       cursor: pointer;
-      flex-grow: 1;
       text-align: center;
+      flex-basis: 0;
+      flex-grow: 1;
     }
 
     .active {

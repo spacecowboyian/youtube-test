@@ -1,11 +1,15 @@
-import { LitElement, html, css } from 'lit-element';
+import {
+  LitElement,
+  html,
+  css
+} from 'lit-element';
 import './search-input.js';
 import './sort-controls.js';
 import './video-list.js';
 
 export class YoutubeSearch extends LitElement {
   static get styles() {
-    return css`
+    return css `
       :host {
         align-items: center;
         display: flex;
@@ -66,23 +70,24 @@ export class YoutubeSearch extends LitElement {
     super();
 
     this.activeSort = 'Relevance';
-    this.key = 'AIzaSyARoxyPIsa5ha9nEEtojLHvXGRgvQ8iuho';
+    this.key = window.location.href === 'http://localhost:8000/' ? 'AIzaSyCkcaHseof1yhGsN_VWsbmRJLSOu1kllFI' : 'AIzaSyC12NzCyM4QYkKRLI3f3Kb8AxpBbzitBBo';
+    console.log(window.location, this.key)
     this.query = 'TA22';
     this.results = [];
   }
 
   fetchCommentCounts(ids) {
     return fetch(
-      `https://www.googleapis.com/youtube/v3/videos?key=${this.key}&part=statistics&id=${ids}`
-    )
+        `https://www.googleapis.com/youtube/v3/videos?key=${this.key}&part=statistics&id=${ids}`
+      )
       .then(r => r.json())
       .then(stats => stats.items.map(item => item.statistics.commentCount));
   }
 
   fetchSearchResults(query, sort) {
     return fetch(
-      `https://www.googleapis.com/youtube/v3/search?key=${this.key}&part=snippet&q=${query}&maxResults=20&type=video&order=${sort}`
-    )
+        `https://www.googleapis.com/youtube/v3/search?key=${this.key}&part=snippet&q=${query}&maxResults=20&type=video&order=${sort}`
+      )
       .then(r => r.json())
       .then(async r => {
         const itemIds = r.items.map(item => item.id.videoId);
@@ -133,9 +138,12 @@ export class YoutubeSearch extends LitElement {
   }
 
   render() {
-    const { query, results } = this;
+    const {
+      query,
+      results
+    } = this;
 
-    return html`
+    return html `
       <div class="container">
         <header>
           <search-input
