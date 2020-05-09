@@ -8,7 +8,7 @@ import './list-item.js';
 
 export class VideoList extends LitElement {
   static get styles() {
-    css `
+    return css `
       :host {
         display: block;
       }
